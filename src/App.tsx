@@ -3,11 +3,11 @@ import './App.css';
 import password_strength from './password_strength.png'
 
 function App() {
-  const [password, setPassword] = useState("")
+  const [p, setPassword] = useState("")
   const [validationText, setValidationText] = useState("Password required")
   const [show, setShow] = useState(false)
 
-  const setAndValidatePassword = (text: string) => {
+  const onInputChange = (text: string) => {
     var passwordInvalid = false
 
     if (text === "correcthorsebatterystaple" || text === "CorrectHorseBatteryStaple") {
@@ -102,9 +102,9 @@ function App() {
     <div className="App" style={{backgroundColor: "#92b4e4", color: "#000000", height: "100vh",padding:"40px", justifyContent: "center", alignItems: "center"}}>
         <p>Password validator</p>
         <p>Enter your password</p>
-        <input onChange={(e) => setAndValidatePassword(e.target.value)} />
+        <input onChange={(e) => onInputChange(e.target.value)} />
         <p className='red'>{validationText}</p>
-        {password !== "" ? <p>Your password {password} is valid! Yay!</p> : <p>Your password {password} is not valid :(</p>}
+        {p !== "" ? <p>Your password {p} is valid! Yay!</p> : <p>Your password {p} is not valid :(</p>}
         <button onClick={() => setShow(show ? false : true)} className="description">
           <div className={`carat ` + `${show && "turn"}`}>{'>'}</div>
           Description
