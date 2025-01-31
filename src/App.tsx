@@ -37,9 +37,9 @@ function App() {
     
     // check if password contain atleast a number, lowercase, and uppercase
     if (
-      !/[0-9]/.test(password) ||
-      !/[a-z]/.test(password) ||
-      !/[A-Z]/.test(password)
+      (!/[0-9]/.test(text)) ||
+      (!/[a-z]/.test(text)) ||
+      (!/[A-Z]/.test(text))
     ) {
       passwordInvalid = true
     }
@@ -81,9 +81,9 @@ function App() {
     
       // check if password contain atleast a number, lowercase, and uppercase
       if (
-        !/[0-9]/.test(password) ||
-        !/[a-z]/.test(password) ||
-        !/[A-Z]/.test(password)
+        !/[0-9]/.test(text) ||
+        !/[a-z]/.test(text) ||
+        !/[A-Z]/.test(text)
       ) {
         setValidationText("Password must contain a lowercase, upercase and number character")
         return
@@ -94,10 +94,12 @@ function App() {
 
     // if password is valid, set it to password
     setPassword(text)
+    // and set validation text to be empty
+    setValidationText("")
   }
   
   return (
-    <div className="App" style={{backgroundColor: "#020444", color: "#ffffff", height: "100vh",padding:"40px", justifyContent: "center", alignItems: "center"}}>
+    <div className="App" style={{backgroundColor: "#92b4e4", color: "#000000", height: "100vh",padding:"40px", justifyContent: "center", alignItems: "center"}}>
         <p>Password validator</p>
         <p>Enter your password</p>
         <input onChange={(e) => setAndValidatePassword(e.target.value)} />
@@ -108,7 +110,7 @@ function App() {
           Description
         </button>
         {
-          show &&
+          show ?
           (
             <>
               <p>To make sure you have a good password, you should have</p>
@@ -124,6 +126,8 @@ function App() {
               <img src={password_strength} />
             </>
           )
+          : 
+          (<></>)
         }
     </div>
   );
