@@ -44,6 +44,15 @@ function App() {
       passwordInvalid = true
     }
 
+    for (let i=0; i < text.length; i++) {
+      const a = text[i]
+      if (/[0-9]/.test(a)) {
+        if (Number(a) / 2 === 0) {
+          passwordInvalid = true
+        }
+      }
+    }
+
     // if password is invalid, we don't alllow it
     if (passwordInvalid == true) {
 
@@ -88,6 +97,16 @@ function App() {
         setValidationText("Password must contain a lowercase, upercase and number character")
         return
       }
+
+      for (let i=0; i < text.length; i++) {
+        const a = text[i]
+        if (/[0-9]/.test(a)) {
+          if (Number(a) / 2 === 0) {
+            setValidationText("Password cannot contain an even digit`")
+            return
+          }
+        }
+      }
       
       return
     }
@@ -118,6 +137,7 @@ function App() {
                 <li>Uppercase</li>
                 <li>Lowercase</li>
                 <li>Numbers</li>
+                <li>No even digits</li>
                 <li>` and ~ are illegal</li>
                 <li>Not contain password</li>
                 <li>No more than 20 characters</li>
