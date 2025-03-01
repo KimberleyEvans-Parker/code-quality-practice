@@ -44,6 +44,7 @@ function App() {
       passwordInvalid = true
     }
 
+    // cannot have even digits
     for (let i=0; i < text.length; i++) {
       const a = text[i]
       if (/[0-9]/.test(a)) {
@@ -98,6 +99,7 @@ function App() {
         return
       }
 
+      // cannot have even digits
       for (let i=0; i < text.length; i++) {
         const a = text[i]
         if (/[0-9]/.test(a)) {
